@@ -1,74 +1,42 @@
 require 'spec_helper'
 
 describe "Static Pages" do
+
+  subject { page }
+
   describe "Home page" do
+    before { visit root_path}
 
-  	it "should have the content 'One Step'" do
-  		visit '/static_pages/home'
-  		expect(page).to have_content('One Step')
-  		
-  	end
-
-  	it "should have the base title" do
-  		visit '/static_pages/home'
-  		expect(page).to have_title('One Step')
-  	end
-
-    it "should not have a custom page title" do
-      visit '/static_pages/home'
-      expect(page).not_to have_title('| Home')
-    end
+  	it { should have_content('One Step')}
+    it { should have_title(full_title(''))}
+    it { should_not have_title('| Home')}
   end
 
   describe "Contact page" do
+    before { visit contact_path }
 
-  	it "should have the content 'Contact us'" do
-  		visit '/static_pages/contact'
-  		expect(page).to have_content('Contact us')
-  	end
-
-  	it "should have the right title" do
-  		visit '/static_pages/contact'
-  		expect(page).to have_title('One Step | Contact')
-  	end
+    it {should have_content('Contact us')}
+    it { should have_title(full_title('Contact'))}
   end
 
   describe "Price page" do
+    before { visit price_path }
 
-  	it "should have content 'Our prices'" do
-  		visit '/static_pages/price'
-  		expect(page).to have_content('Our prices')
-  	end
-
-  	it "should have the right title" do
-  		visit '/static_pages/price'
-  		expect(page).to have_title('One Step | Prices')
-  	end
+     it {should have_content('Our prices')}
+     it { should have_title(full_title('Prices'))}
   end
 
   describe "Sale page" do
+    before { visit sale_path }
 
-  	it "should have content 'Our sales!'" do
-  		visit '/static_pages/sale'
-  		expect(page).to have_content('Our sales!')
-  	end
-
-  	it "should have the right title" do
-  		visit '/static_pages/sale'
-  		expect(page).to have_title('One Step | Sales')
-  	end
+    it {should have_content('Our sales!')}
+    it { should have_title(full_title('Sales'))}
   end
 
   describe "Schedule page" do
+    before { visit schedule_path }
 
-  	it "should have content 'Schedule'" do
-  		visit '/static_pages/schedule'
-  		expect(page).to have_content ('Schedule')
-  	end
-
-  	it "should have the right title" do
-  		visit '/static_pages/schedule'
-  		expect(page).to have_title('One Step | Schedule')
-  	end
+    it {should have_content('Schedule')}
+    it { should have_title(full_title('Schedule'))}
   end
 end

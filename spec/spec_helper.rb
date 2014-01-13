@@ -23,6 +23,7 @@ Spork.prefork do
     # config.mock_with :mocha
     # config.mock_with :flexmock
     # config.mock_with :rr
+    config.include Rails.application.routes.url_helpers
 
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -41,7 +42,7 @@ Spork.prefork do
     # order dependency and want to debug it, you can fix the order by providing
     # the seed, which is printed after each run.
     #     --seed 1234
-    config.order = "random"
+    config.order = "random" 
     # Include the Capybara DSL so that specs in spec/requests still work.
     config.include Capybara::DSL
     # Disable the old-style object.should syntax.
