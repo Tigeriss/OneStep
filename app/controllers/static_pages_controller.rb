@@ -10,4 +10,8 @@ class StaticPagesController < ApplicationController
 
   def sale
   end
+
+  def schedule
+  	
+  end
 end

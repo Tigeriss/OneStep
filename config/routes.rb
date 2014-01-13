@@ -3,6 +3,7 @@ OneStep::Application.routes.draw do
   get "static_pages/contact"
   get "static_pages/price"
   get "static_pages/sale"
+  get "static_pages/schedule"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
