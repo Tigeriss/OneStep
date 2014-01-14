@@ -1,9 +1,11 @@
 OneStep::Application.routes.draw do
+  get "users/new"
   root 'static_pages#home'
  match '/contact', to: 'static_pages#contact', via: 'get'
  match '/sale', to: 'static_pages#sale', via: 'get'
  match '/schedule', to: 'static_pages#schedule', via: 'get'
  match '/price', to: 'static_pages#price', via: 'get'
+ match '/signup', to: 'users#new', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
