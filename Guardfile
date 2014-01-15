@@ -3,7 +3,7 @@
 
 require 'active_support/inflector'
 
-guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' },
+guard 'spork', :wait => 60, :cucumber_env => { 'RAILS_ENV' => 'test' },
                :rspec_env    => { 'RAILS_ENV' => 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
