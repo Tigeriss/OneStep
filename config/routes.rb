@@ -1,5 +1,5 @@
 OneStep::Application.routes.draw do
-  get "users/new"
+  resources :users
   root 'static_pages#home'
  match '/contact', to: 'static_pages#contact', via: 'get'
  match '/sale', to: 'static_pages#sale', via: 'get'
