@@ -36,4 +36,7 @@ OneStep::Application.configure do
 
   #Speed up tests by lowering bcrypt's cost function
   ActiveModel::SecurePassword.min_cost = true
+
+  #Setting log level
+  config.log_level = :warn
 end
