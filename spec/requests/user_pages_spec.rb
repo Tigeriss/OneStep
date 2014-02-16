@@ -56,6 +56,7 @@ describe "UserPages" do
         describe "signup page" do
       	 before { visit signup_path}
       	 let( :submit ) { "Create my account" }
+         let(:user) { FactoryGirl.create(:user) }
 
       	 describe "with invalid information" do
       		it "should not create a user" do
@@ -74,7 +75,7 @@ describe "UserPages" do
       			fill_in "Nickname", with: "Example User"
       			fill_in "Email", with: "user@example.com"
       			fill_in "Password", with: "foobar"
-      			fill_in "Confirmation", with: "foobar"
+      			fill_in "Confirm Password", with: "foobar"
       		end
 
       		it "should create a user" do
@@ -103,7 +104,7 @@ describe "UserPages" do
       	it { should have_content(user.nickname) }
       	it { should have_title(user.nickname) }
       end
-#------------------------#
+#-----------edit-------------#
       describe "edit" do
         let(:user) { FactoryGirl.create(:user) }
         before do
@@ -141,6 +142,28 @@ describe "UserPages" do
           specify { expect(user.reload.nickname).to eq new_nickname }
           specify { expect(user.reload.email).to eq new_email }
         end
+
+        describe "forbidden attributes" do
+          let(:params) do
+            { user: { admin: true, password: user.password, password_confirmation: user.password } }
+          end
+          before do
+            sign_in user, no_capybara: true
+            patch user_path(user), params
+          end
+          specify { expect(user.reload).not_to be_admin }
+        end
       end
-#------------------------#
+#----------signed in sign up--------------#
+  describe "sign up for signed in users" do
+    let(:user) { FactoryGirl.create(:user) }
+    before { sign_in user }
+
+    describe "sign up button on the home page" do
+      before { visit root_path }
+      describe "Sign up button presence" do
+        it { should_not have_content "Sign up now!"}
+      end
+    end
+  end
 end

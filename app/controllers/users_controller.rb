@@ -8,7 +8,11 @@ class UsersController < ApplicationController
   end
 
   def new
-  	@user = User.new
+    if signed_in?
+      redirect_to root_url
+    else
+  	 @user = User.new 
+    end
   end
 
   def show
@@ -16,14 +20,18 @@ class UsersController < ApplicationController
   end
 
   def create
-  	@user = User.new(user_params)
-  	if @user.save
-      sign_in @user
-      flash[:success] = "Welcome to our club!"
-      redirect_to @user
-  	else
-  		render 'new'
-  	end 
+    if signed_in?
+      redirect_to root_url
+    else
+    	@user = User.new(user_params)
+    	if @user.save
+        sign_in @user
+        flash[:success] = "Welcome to our club!"
+        redirect_to @user
+    	else
+    		render 'new'
+    	end 
+    end
   end
 
   def edit   
@@ -39,9 +47,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    if @user == current_user
+      flash[:error] = "You should not delete yourself!"
+      redirect_to users_url
+    else
       User.find(params[:id]).destroy
       flash[:success] = "User deleted."
       redirect_to users_url
+    end
   end
 
   private
