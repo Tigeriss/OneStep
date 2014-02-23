@@ -12,7 +12,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20140213081113) do
-  create_table "microposts". force: true do |t|
+  
+  create_table "microposts", force: true do |t|
     t.string "content"
     t.integer "user_id"
     t.datetime "created_at"
