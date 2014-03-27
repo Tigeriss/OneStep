@@ -5,24 +5,29 @@ describe "Static Pages" do
   subject { page }
 
     shared_examples_for "all static pages" do
-      it { should have_selector('h1', text: heading) }
       it { should have_title(full_title(page_title)) }
     end
 
     it "should have the right links on the layout" do
       visit root_path
-      click_link "Contact"
-      expect(page).to have_title(full_title('Contact'))
-      click_link "Schedule"
-      expect(page).to have_title(full_title('Schedule'))
-      click_link "Sale"
-      expect(page).to have_title(full_title('Sales'))
-      click_link "Price"
-      expect(page).to have_title(full_title('Prices'))
+      click_link "Контакты"
+      expect(page).to have_title(full_title('Контакты'))
+      click_link "Расписание"
+      expect(page).to have_title(full_title('Расписание'))
+      click_link "Акции"
+      expect(page).to have_title(full_title('Акции'))
+      click_link "Цена"
+      expect(page).to have_title(full_title('Цены'))
+      click_link "Новости"
+      expect(page).to have_title(full_title('Новости'))
+      click_link "Медиагалерея"
+      expect(page).to have_title(full_title('Медиагалерея'))
+      click_link "Преподаватели"
+      expect(page).to have_title(full_title('Преподаватели'))
+      click_link "Направления"
+      expect(page).to have_title(full_title('Направления'))
       click_link "one step"
       expect(page).to have_title(full_title(''))
-      click_link "Sign up"
-      expect(page).to have_title(full_title('Sign up'))
     end
 
     describe "Home page" do
@@ -65,8 +70,8 @@ describe "Static Pages" do
     describe "Contact page" do
       before { visit contact_path }
 
-      let (:heading) { 'Contact Us' }
-      let (:page_title) { 'Contact' }
+      let (:heading) { 'Контакты' }
+      let (:page_title) { 'Контакты' }
 
       it_should_behave_like "all static pages"
     end
@@ -74,8 +79,8 @@ describe "Static Pages" do
     describe "Price page" do
       before { visit price_path }
 
-      let (:heading) { 'Our prices' }
-      let (:page_title) { 'Prices' }
+      let (:heading) { 'Наши цены' }
+      let (:page_title) { 'Цены' }
 
        it_should_behave_like "all static pages"
     end
@@ -83,8 +88,8 @@ describe "Static Pages" do
     describe "Sale page" do
       before { visit sale_path }
 
-      let (:heading) { 'Our sales!' }
-      let (:page_title) { 'Sales' }
+      let (:heading) { 'Акции' }
+      let (:page_title) { 'Акции' }
 
       it_should_behave_like "all static pages"
     end
@@ -92,8 +97,8 @@ describe "Static Pages" do
     describe "Schedule page" do
       before { visit schedule_path }
 
-      let (:heading) { 'Schedule' }
-      let (:page_title) { 'Schedule' }
+      let (:heading) { 'Расписание' }
+      let (:page_title) { 'Расписание' }
 
       it_should_behave_like "all static pages"
     end 

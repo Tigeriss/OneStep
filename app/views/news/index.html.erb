@@ -1,0 +1,14 @@
+<% provide :title, 'Новости' %>
+<h1>Новости нашей студии</h1>
+<ul class="news">
+	<% @news.each do |n| %>
+	<li>
+		<%= image_tag(n.image_link, alt: n.title, align: 'left', size: "100x70", style: 'padding:10px;') %>
+		<h4><%= link_to n.title, n %></h4>
+		<br>
+		<%= l n.created_at, format: :short  %>
+		<h2><%= n.description %></h2>
+	</li>
+	<% end %>
+</ul>
+		

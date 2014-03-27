@@ -1,27 +1,23 @@
-	<% if signed_in? %>
-		<div class="row">
-	    	<aside class="span4">
-	      		<section>
-	        		<%= render 'shared/user_info' %>
-	      		</section>
-	      		<section>
-	      			<%= render 'shared/stats' %>
-	      		</section>
-	      		<section>
-	        		<%= render 'shared/micropost_form' %>
-	      		</section>
-	    	</aside>
+<div class="center hero-unit">
+	<h1>One Step</h1>
+	<h2>Dance studio</h2>
+</div>
+<aside>
+	<%= image_tag("logo.png", alt: "One Step", align: 'left', style: 'padding:10px;') %>
 
-	    	<div class="span8">
-    			<h3>Micropost Feed</h3>
-    			<%= render 'shared/feed' %>
-    		</div>
-  		</div>
-	<% else %>
-		<div class="center hero-unit">
-			<h1>One Step</h1>
-			<h2>This is the home page for One Step site</h2>
-				<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary"%>
-				<%= link_to image_tag("logo.png", alt: "One Step"), root_path %>
-		</div>
-	<% end %>
+	<p class="fourtabs">	Мы рады приветствовать Вас в Танцевальном центре «One Step». Если Вы зашли на нашу страничку , то Вы действительно хотите научиться танцевать, и мы готовы Вам в этом помогать. Мы предлагаем Вам заниматься танцами в нашем зале, в группе или индивидуально, в паре или соло, танцевать на корпоративных вечерах.</p>
+	<p class="fourtabs">	Сомнения? Комплексы? Стеснительность? Мы, как и вы, прекрасно знаем, что это такое. А еще мы знаем, что каждый может научиться танцевать и получать от этого настоящее удовольствие!</p>
+	<p class="fourtabs">	Обучение танцам в нашей школе подарит Вам:
+	<ul class="homelist">
+		<li>Яркие эмоции, которые Вы внесете в череду монотонных будней!</li>
+		<li>Минимум час в неделю, который Вы посвящаете исключительно себе и собственному творческому развитию!</li>
+		<li>Новые интересные знакомства!</li>
+		<li>Отличное самочувствие, высокую работоспособность и позитивный настрой!</li>
+		<li>Отличный способ выделиться – Вы будете уметь то, о чем многие только мечтают!</li>
+		<li>Высокую самооценку!</li>
+		<li>Возможность наконец-то посвятить себя тому хобби, о котором Вы возможно мечтали всю свою жизнь.</li>
+		<li>А для детей – это дополнительная гарантия гармоничного развития и умения общаться!</li>
+	</ul>
+	</p>
+	<div class="center"><h3>Мы всегда Вам Рады!!</h3></div>
+</aside>

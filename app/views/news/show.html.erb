@@ -1,0 +1,5 @@
+<h1><%= @news.title %></h1>
+<div class = "center hero-unit">
+	<%= image_tag(@news.image_link, alt: @news.title, align: 'left', style: 'padding:10px;') %>
+	<%= @news.text %>
+</div>
