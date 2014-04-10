@@ -4,35 +4,9 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page]) 
-  end
-
-  def new
-    if signed_in?
-      redirect_to root_url
-    else
-  	 @user = User.new 
-    end
   end
 
   def show
-  	@user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:page])
-  end
-
-  def create
-    if signed_in?
-      redirect_to root_url
-    else
-    	@user = User.new(user_params)
-    	if @user.save
-        sign_in @user
-        flash[:success] = "Welcome to our club!"
-        redirect_to @user
-    	else
-    		render 'new'
-    	end 
-    end
   end
 
   def edit   
@@ -45,31 +19,6 @@ class UsersController < ApplicationController
     else
           render 'edit'
     end
-  end
-
-  def destroy
-    if @user == current_user
-      flash[:error] = "You should not delete yourself!"
-      redirect_to users_url
-    else
-      User.find(params[:id]).destroy
-      flash[:success] = "User deleted."
-      redirect_to users_url
-    end
-  end
-
-  def following
-    @title = "Following"
-    @user = User.find(params[:id])    
-    @users = @user.followed_users.paginate(page: params[:page])
-    render 'show_follow'
-  end
-
-  def followers
-    @title = "Followers"
-    @user = User.find(params[:id])  
-    @users = @user.followers.paginate(page: params[:page])  
-    render 'show_follow'
   end
 
   private
