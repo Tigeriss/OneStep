@@ -24,8 +24,8 @@ describe "Static Pages" do
       #expect(page).to have_title(full_title('Медиагалерея'))
       #click_link "Преподаватели"
       #expect(page).to have_title(full_title('Преподаватели'))
-      #click_link "Направления"
-      #expect(page).to have_title(full_title('Направления'))
+      click_link "Направления"
+      expect(page).to have_title(full_title('Направления'))
       click_link "one step"
       expect(page).to have_title(full_title(''))
     end
@@ -72,6 +72,15 @@ describe "Static Pages" do
 
       let (:heading) { 'Расписание' }
       let (:page_title) { 'Расписание' }
+
+      it_should_behave_like "all static pages"
+    end 
+
+    describe "Styles page" do
+      before { visit styles_path }
+
+      let (:heading) { 'Направления' }
+      let (:page_title) { 'Направления' }
 
       it_should_behave_like "all static pages"
     end 

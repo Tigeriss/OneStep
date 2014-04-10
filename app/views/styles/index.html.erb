@@ -1,0 +1,13 @@
+<% provide :title, 'Направления' %>
+<h1>В нашей студии Вы можете научиться танцевать:</h1>
+<ul class="news">
+	<% @styles.each do |s| %>
+	<li>
+		<%= image_tag(s.media_url, alt: s.name, align: 'left', size: "100x70", style: 'padding:10px;') %>
+		<h4><%= link_to s.name, s %></h4>
+		<br>
+		<%= l s.created_at, format: :short  %>
+		<h2><%= s.description %></h2>
+	</li>
+	<% end %>
+</ul>
